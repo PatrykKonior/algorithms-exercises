@@ -19,6 +19,42 @@
 
 class ArrayList {
   // code goes here
+  constructor() {
+    // instantiate all your variables
+    this.data = {};
+    this.length = 0;
+  }
+  push(value) {
+    // add an item to the end of the array
+    this.data[this.length] = value;
+    this.length++;
+  }
+  pop() {
+    // remove the last item in the array and returns it
+    const response = this.data[this.length - 1];
+    delete this.data[this.length - 1];
+    this.length--;
+    return response;
+    // correct implementation is also:
+    // return this.delete(this.length -1);
+  }
+  get(index) {
+    // returns that item from the array
+    return this.data[index];
+  }
+  delete(index) {
+    // remove item from the array and collapses the array
+    const response = this.data[index];
+    this._collapseTo(index)
+    return response;
+  }
+  _collapseTo(index) {
+    for (let i = index; i < this.length; i++) {
+      this.data[i] = this.data[i + 1];
+    }
+    delete this.data[this.length - 1];
+    this.length--;
+  }
 }
 
 // unit tests
