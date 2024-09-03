@@ -1,6 +1,24 @@
 const breadthFirstTraverse = (queue, array) => {
   // fill code in here
+  // recursion
+  if (!queue.length) return array;
+  const node = queue.shift();
+  array.push(node.value);
+  if (node.left) queue.push(node.left);
+  if (node.right) queue.push(node.right);
+  return breadthFirstTraverse(queue, array);
 };
+
+const breadthFirstTraverse2 = (queue, array) => {
+  // with no recursion
+  while(queue.length) {
+    const node = queue.shift();
+    array.push(node.value);
+    if (node.left) queue.push(node.left);
+    if (node.right) queue.push(node.right);
+  }
+  return array;
+}
 
 // unit tests
 // do not modify the below code
