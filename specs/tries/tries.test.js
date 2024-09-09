@@ -66,7 +66,6 @@ class Node {
             const child = this.children[i];
             completions = completions.concat(child._complete(string, "", []));
         }
-
         return completions;
     }
 }
